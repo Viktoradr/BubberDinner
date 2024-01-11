@@ -1,0 +1,50 @@
+@HostAddress=http://localhost:5028
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NTgwYWRiNGIwNDA1NTBmOWY2ZTgxOWYiLCJnaXZlbl9uYW1lIjoiVmljdG9yIiwiZmFtaWx5X25hbWUiOiJBbHZlcyIsImp0aSI6ImRmY2I2OTQwLWZkYTgtNGIzYy04MTNiLWRkYzcyODllNzlkMyIsImV4cCI6MTcwMjkzNTQ5MiwiaXNzIjoiQnViZXJEaW5uZXIiLCJhdWQiOiJCdWJlckRpbm5lciJ9.QdTWc-cCR0v-OqVoJ3F5iZeY9-hWA7TloTWhV9ZbnL0
+
+POST {{HostAddress}}/auth/register
+Content-Type: application/json
+
+{
+    "firstName": "Victor",
+    "lastName": "Alves",
+    "email": "victor.adrodrigues@outlook.com",
+    "password": "123456"
+}
+###
+
+POST {{HostAddress}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "victor.adrodrigues@outlook.com",
+    "password": "123456"
+}
+###
+
+GET {{HostAddress}}/dinners
+Authorization: Bearer {{token}}
+###
+
+@hostId=abb6e90c-776d-4c15-9da5-e446f96c022c
+
+POST {{HostAddress}}/hosts/{{hostId}}/menus
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Yummy Menu",
+    "description": "A menu with yummy food",
+    "sections": [
+        {
+            "name": "Appetizers",
+            "description": "Starters",
+            "items" : [
+                {
+                    "name": "Fried Pickles",
+                    "description": "A menu with yummy food"
+                }
+            ]
+        }
+    ]
+}
+###
